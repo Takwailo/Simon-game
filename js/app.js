@@ -3,7 +3,7 @@ let sequences = [];
 let playerGuess = [];
 let level = 1;
 let root = document.querySelector("#root");
-let resetBtn = document.querySelector("#reset");
+let resetBtn = document.querySelector("#Start");
 let colorBtns = document.querySelectorAll(".btn");
 let guessCount = 0;
 
@@ -15,6 +15,8 @@ resetBtn.addEventListener("click", resetGame);
 function addSequence() {
     sequences.push(colors[Math.floor(Math.random() * 4)]);
 }
+
+
 
 function displaySequences(callbackFunction) {
   sequences.forEach((color, index) => {

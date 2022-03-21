@@ -9,9 +9,19 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #eeeeee;
+  flex-direction: column;
 }
 
-#reset {
+h1{
+  margin: 0 0 5px 0;
+}
+
+nav{
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+#Start {
   background-color: black;
   color: white;
 }
@@ -54,13 +64,14 @@ body {
 }
 #root.stopped .btn.yellow:hover,
 .btn.yellow.displaySequence {
-    box-shadow: 0 0 40px yellow;
+    box-shadow: 0 0 40px rgb(188, 188, 7);
 }
 
 #root {
   display: flex;
   flex-wrap: wrap;
-  height: 240px;
+  height: 270px;
   width: 240px;
   gap: 20px;
+  justify-content: center;
 }
