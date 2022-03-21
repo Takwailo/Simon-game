@@ -1,0 +1,66 @@
+#light {
+  background-color: hotpink;
+}
+
+body {
+  display: flex;
+  gap: 10px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+
+#reset {
+  background-color: black;
+  color: white;
+}
+
+.btn {
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
+  background-color: grey;
+}
+
+.btn.red {
+    background-color: red;
+    border-color: black;
+}
+.btn.blue {
+    background-color: blue;
+    border-color: black;
+}
+.btn.green {
+    background-color: green;
+    border-color: black;
+}
+.btn.yellow {
+    background-color: yellow;
+    border-color: black;
+}
+
+#root.stopped .btn.red:hover,
+.btn.red.displaySequence {
+    box-shadow: 0 0 40px red;
+}
+#root.stopped .btn.blue:hover,
+.btn.blue.displaySequence {
+    box-shadow: 0 0 40px blue;
+}
+#root.stopped .btn.green:hover,
+.btn.green.displaySequence {
+    box-shadow: 0 0 40px green;
+}
+#root.stopped .btn.yellow:hover,
+.btn.yellow.displaySequence {
+    box-shadow: 0 0 40px yellow;
+}
+
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  height: 240px;
+  width: 240px;
+  gap: 20px;
+}
