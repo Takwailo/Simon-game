@@ -11,17 +11,25 @@
 </head>
 
 <body>
-    <div><h1>SIMON</h1></div>
-    
-    <nav>Direction:<br>Follow the sequence<br>Thats all you need to do</nav>
+    <div>
+        <h1>SIMON</h1>
+    </div>
+    <nav>Direction: Choose you speed and click Start. Follow the sequence and repeat.</nav>
+    <div id="speedInst">
+        <h2>Faster</h2>
+        <input type="range" min="500" max="1000" class="slider" id="speedRange">
+        <h2>Slower</h2>
+    </div>
+    <div>
+        <button id="Start">Start</button>
+    </div>
     <div id="root" class="stopped">
         <button class="btn red" id="red"></button>
         <button class="btn yellow" id="yellow"></button>
         <button class="btn green" id="green"></button>
         <button class="btn blue" id="blue"></button>
-        <button id="Start">Start</button>
     </div>
-    <h2>Level:</h2>
+    <h3>Level: 1</h3>
 </body>
 
 </html>
