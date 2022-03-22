@@ -13,10 +13,10 @@ let disapperSpeed = displaySpeed - 200;
 speedBar.oninput = function () {
   displaySpeed = this.value;
 };
-
+//call basic function when page load
 disableColorBtns();
 setRootRunning();
-
+//event listener 
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
