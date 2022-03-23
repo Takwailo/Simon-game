@@ -18,9 +18,7 @@
     <div id="speedInst">
         <h2>Faster</h2>
         <input type="range" min="500" max="1000" class="slider" id="speedRange">
-        <h2>Slower</h2>
-    </div>
-    <div>
+        <h2>Slower</h2><br>
         <button id="Start">Start</button>
     </div>
     <div id="root" class="stopped">
@@ -29,7 +27,14 @@
         <button class="btn green" id="green"></button>
         <button class="btn blue" id="blue"></button>
     </div>
-    <h3>Level: 1</h3>
+    <div id="score">
+        <h3 id="currentLevel">Level: 1</h3>
+        <button id="scoreBtn">Check Out the high score</button>
+        <ol id="scoreboard">high score</ol>
+        <h3 id="currentScore">Current Score: 0</h3>
+    </div>
+    
+
 </body>
 
 </html>

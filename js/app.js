@@ -1,14 +1,19 @@
 const colors = ["yellow", "red", "green", "blue"];
 let sequences = [];
 let playerGuess = [];
-let Level
-let root = document.querySelector("#root");
-let resetBtn = document.querySelector("#Start");
-let colorBtns = document.querySelectorAll(".btn");
+let topFiveScore = [];
+let Level;
+const root = document.querySelector("#root");
+const resetBtn = document.querySelector("#Start");
+const colorBtns = document.querySelectorAll(".btn");
 let guessCount = 0;
-let speedBar = document.getElementById("speedRange");
+const speedBar = document.getElementById("speedRange");
 let displaySpeed = speedBar.value;
 let disapperSpeed = displaySpeed - 200;
+const scoreBtn = document.querySelector("#scoreBtn");
+const scoreBoard = document.getElementById("scoreboard");
+let playerName = "";
+let score;
 
 speedBar.oninput = function () {
   displaySpeed = this.value;
@@ -16,18 +21,48 @@ speedBar.oninput = function () {
 //call basic function when page load
 disableColorBtns();
 setRootRunning();
-//event listener 
+//event listener
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
 resetBtn.addEventListener("click", resetGame);
+scoreBtn.addEventListener("click", displayScoreBoard);
+
+function scoreCalculator() {
+  if (displaySpeed < 750) {
+    score = +level * 200;
+  } else {
+    score = +level * 100;
+  }
+}
+
+function displayScoreBoard() {
+  if (scoreBoard.style.display === "none") {
+    scoreBoard.style.display = "block";
+  } else {
+    scoreBoard.style.display = "none";
+  }
+}
+
+function enterPlayerName() {
+  let player = prompt("Enter you name to be on the Score Board");
+  playerName = player;
+}
 
 function addSequence() {
   sequences.push(colors[Math.floor(Math.random() * 4)]);
 }
 
 function displayLevel() {
-  document.querySelector("h3").innerText = `Level: ${level}`;
+  document.querySelector("#currentLevel").innerText = `Level: ${level}`;
+}
+
+function displayCurrentScore() {
+  document.querySelector("#currentScore").innerText = `Current Score: ${score}`;
+}
+
+function resetScore() {
+  score = 0;
 }
 
 function resetLevel() {
@@ -112,6 +147,7 @@ function startLevel() {
     });
     setRootRunning();
   }, 1000);
+  scoreCalculator();
 }
 
 function testColor(e) {
@@ -122,13 +158,48 @@ function testColor(e) {
       level += 1;
       displayLevel();
       startLevel();
+      displayCurrentScore();
     }
   } else {
-    alert("haha you got it wrong");
+    alert("youlose");
+    enterPlayerName();
     enableResetButton();
     disableColorBtns();
     setRootRunning();
     enableSpeedBar();
+    addToScoreArray()
+    displayTopFive()
     resetLevel();
+    resetScore();
+    displayCurrentScore();
   }
 }
+
+function addToScoreArray() {
+  let player1 = {playerName, score}
+  topFiveScore.push(player1)
+}
+
+function sortScore(){
+  topFiveScore.sort(function (a,b){
+    return b.score - a.score
+  })
+}
+
+function onlyTopFive(){
+  topFiveScore.length = 5
+}
+
+function displayTopFive(){
+  const listEl = document.querySelector('ol')
+  sortScore()
+  listEl.innerHTML = ""
+  topFiveScore.forEach(function(e){
+    let list = document.createElement('li')
+    let displayScore = `${e.playerName} ${e.score}`
+    console.log(displayScore)
+    list.innerText = displayScore
+    listEl.appendChild(list)
+  })
+}
+// testing score board
