@@ -9,7 +9,7 @@ const colorBtns = document.querySelectorAll(".btn");
 let guessCount = 0;
 const speedBar = document.getElementById("speedRange");
 let displaySpeed = speedBar.value;
-let disapperSpeed = 0
+let disapperSpeed = 0;
 const scoreBtn = document.querySelector("#scoreBtn");
 const scoreBoard = document.getElementById("scoreboard");
 let playerName = "";
@@ -19,8 +19,8 @@ speedBar.oninput = function () {
   displaySpeed = this.value;
 };
 
-function toadjustDisapperSpeed(){
-  disapperSpeed = displaySpeed - displaySpeed/5
+function toadjustDisapperSpeed() {
+  disapperSpeed = displaySpeed - displaySpeed / 5;
 }
 
 //call basic function when page load
@@ -36,9 +36,9 @@ scoreBtn.addEventListener("click", displayScoreBoard);
 
 function scoreCalculator() {
   if (displaySpeed < 750) {
-    score = +level * 200;
+    score =+ level * 200;
   } else {
-    score = +level * 100;
+    score =+ level * 100;
   }
 }
 
@@ -143,7 +143,7 @@ function enableColorBtns() {
 }
 
 function startLevel() {
-  toadjustDisapperSpeed()
+  toadjustDisapperSpeed();
   clearGuesses();
   addSequence();
   setTimeout(() => {
@@ -174,56 +174,56 @@ function testColor(e) {
     disableColorBtns();
     setRootRunning();
     enableSpeedBar();
-    addToScoreArray()
-    stringNStoreScore()
-    displayTopFive()
+    addToScoreArray();
+    stringNStoreScore();
+    displayTopFive();
     resetLevel();
-      resetScore()
+    resetScore();
     displayCurrentScore();
   }
 }
 
 function addToScoreArray() {
-  if (topFiveScore === null){
-    topFiveScore = new Array
-    let player1 = {playerName, score}
-    topFiveScore.push(player1)
-  }else {
-    let player1 = {playerName, score}
-    topFiveScore.push(player1)
+  if (topFiveScore === null) {
+    topFiveScore = new Array();
+    let player1 = { playerName, score };
+    topFiveScore.push(player1);
+  } else {
+    let player1 = { playerName, score };
+    topFiveScore.push(player1);
   }
 }
 
-function sortScore(){
-  topFiveScore.sort(function (a,b){
-    return b.score - a.score
-  })
+function sortScore() {
+  topFiveScore.sort(function (a, b) {
+    return b.score - a.score;
+  });
 }
 
-function onlyTopFive(){
-  if (topFiveScore.length >= 5){
-    topFiveScore.length = 5
+function onlyTopFive() {
+  if (topFiveScore.length >= 5) {
+    topFiveScore.length = 5;
   }
 }
 
-function displayTopFive(){
-  const listEl = document.querySelector('ol')
-  sortScore()
-  onlyTopFive()
-  listEl.innerHTML = ""
-  topFiveScore.forEach(function(e){
-    let list = document.createElement('li')
-    let displayScore = `${e.playerName} ${e.score}`
-    list.innerText = displayScore
-    listEl.appendChild(list)
-  })
+function displayTopFive() {
+  const listEl = document.querySelector("ol");
+  sortScore();
+  onlyTopFive();
+  listEl.innerHTML = "";
+  topFiveScore.forEach(function (e) {
+    let list = document.createElement("li");
+    let displayScore = `${e.playerName} ${e.score}`;
+    list.innerText = displayScore;
+    listEl.appendChild(list);
+  });
 }
 
-function stringNStoreScore(){
-  let str = JSON.stringify(topFiveScore)
-  localStorage.setItem('TopScores', str)
+function stringNStoreScore() {
+  let str = JSON.stringify(topFiveScore);
+  localStorage.setItem("TopScores", str);
 }
 
-function deStringNRetriveScore(){
-  topFiveScore = JSON.parse(localStorage.getItem('TopScores'))
+function deStringNRetriveScore() {
+  topFiveScore = JSON.parse(localStorage.getItem("TopScores"));
 }
