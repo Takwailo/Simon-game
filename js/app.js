@@ -22,7 +22,6 @@ speedBar.oninput = function () {
 disableColorBtns();
 setRootRunning();
 deStringNRetriveScore();
-displayTopFive();
 //event listener
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
@@ -171,17 +170,22 @@ function testColor(e) {
     enableSpeedBar();
     addToScoreArray()
     stringNStoreScore()
-    deStringNRetriveScore
     displayTopFive()
     resetLevel();
-    resetScore();
+      resetScore()
     displayCurrentScore();
   }
 }
 
 function addToScoreArray() {
-  let player1 = {playerName, score}
-  topFiveScore.push(player1)
+  if (topFiveScore === null){
+    topFiveScore = new Array
+    let player1 = {playerName, score}
+    topFiveScore.push(player1)
+  }else {
+    let player1 = {playerName, score}
+    topFiveScore.push(player1)
+  }
 }
 
 function sortScore(){
@@ -191,17 +195,19 @@ function sortScore(){
 }
 
 function onlyTopFive(){
-  topFiveScore.length = 5
+  if (topFiveScore.length >= 5){
+    topFiveScore.length = 5
+  }
 }
 
 function displayTopFive(){
   const listEl = document.querySelector('ol')
   sortScore()
+  onlyTopFive()
   listEl.innerHTML = ""
   topFiveScore.forEach(function(e){
     let list = document.createElement('li')
     let displayScore = `${e.playerName} ${e.score}`
-    console.log(displayScore)
     list.innerText = displayScore
     listEl.appendChild(list)
   })
