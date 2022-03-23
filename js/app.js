@@ -9,7 +9,7 @@ const colorBtns = document.querySelectorAll(".btn");
 let guessCount = 0;
 const speedBar = document.getElementById("speedRange");
 let displaySpeed = speedBar.value;
-let disapperSpeed = displaySpeed - 200;
+let disapperSpeed = 0
 const scoreBtn = document.querySelector("#scoreBtn");
 const scoreBoard = document.getElementById("scoreboard");
 let playerName = "";
@@ -18,6 +18,11 @@ let score;
 speedBar.oninput = function () {
   displaySpeed = this.value;
 };
+
+function toadjustDisapperSpeed(){
+  disapperSpeed = displaySpeed - displaySpeed/5
+}
+
 //call basic function when page load
 disableColorBtns();
 setRootRunning();
@@ -138,6 +143,7 @@ function enableColorBtns() {
 }
 
 function startLevel() {
+  toadjustDisapperSpeed()
   clearGuesses();
   addSequence();
   setTimeout(() => {
