@@ -21,6 +21,8 @@ speedBar.oninput = function () {
 //call basic function when page load
 disableColorBtns();
 setRootRunning();
+deStringNRetriveScore();
+displayTopFive();
 //event listener
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
@@ -168,6 +170,8 @@ function testColor(e) {
     setRootRunning();
     enableSpeedBar();
     addToScoreArray()
+    stringNStoreScore()
+    deStringNRetriveScore
     displayTopFive()
     resetLevel();
     resetScore();
@@ -202,4 +206,12 @@ function displayTopFive(){
     listEl.appendChild(list)
   })
 }
-// testing score board
+
+function stringNStoreScore(){
+  let str = JSON.stringify(topFiveScore)
+  localStorage.setItem('TopScores', str)
+}
+
+function deStringNRetriveScore(){
+  topFiveScore = JSON.parse(localStorage.getItem('TopScores'))
+}
