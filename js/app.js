@@ -33,17 +33,14 @@ runInitial();
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
-resetBtn.addEventListener("click", resetGame)
-
+resetBtn.addEventListener("click", resetGame);
 
 //run initial funtion
 function runInitial() {
   disableColorBtns();
   setRootRunning();
   deStringNRetriveScore();
-  if (topFiveScore !== null) {
-    displayTopFive();
-  }
+  displayTopFive();
 }
 
 function addSequence() {
@@ -174,7 +171,7 @@ function testColor(e) {
     resetLevel();
     resetScore();
     displayCurrentScore();
-    displaySpeed = speedBar.value
+    displaySpeed = speedBar.value;
   }
 }
 
@@ -184,7 +181,7 @@ function testColor(e) {
 //update score scoreborad, and save to local storage
 function enterPlayerName() {
   let player = prompt("Enter you name to be on the Score Board");
-  if (player == null || player == "") {
+  if (!player) {
     playerName = "Mystery";
   } else {
     playerName = player;
@@ -204,14 +201,8 @@ function scoreCalculator() {
 }
 
 function addToScoreArray() {
-  if (topFiveScore === null) {
-    topFiveScore = new Array();
-    let player1 = { playerName, score };
-    topFiveScore.push(player1);
-  } else {
-    let player1 = { playerName, score };
-    topFiveScore.push(player1);
-  }
+  let player1 = { playerName, score };
+  topFiveScore.push(player1);
 }
 
 function sortScore() {
@@ -245,21 +236,21 @@ function stringNStoreScore() {
 }
 
 function deStringNRetriveScore() {
-  topFiveScore = JSON.parse(localStorage.getItem("TopScores"));
+  topFiveScore = JSON.parse(localStorage.getItem("TopScores")) || [];
 }
 
 // adjust speed per level
-function adjustSpeed(){
-  if (level % 2 == 0 && displaySpeed >= 180){
-    displaySpeed = displaySpeed - displaySpeed/10
+function adjustSpeed() {
+  if (level % 2 == 0 && displaySpeed >= 180) {
+    displaySpeed = displaySpeed - displaySpeed / 10;
   }
-  if (displaySpeed < 180){
-    displaySpeed = 180
+  if (displaySpeed < 180) {
+    displaySpeed = 180;
   }
 }
 
 // when lose notification
-function whenLose(){
+function whenLose() {
   alert("You Lose");
   enterPlayerName();
 }
