@@ -157,12 +157,12 @@ function testColor(e) {
     if (playerGuess.length === sequences.length) {
       level += 1;
       displayLevel();
+      adjustSpeed();
       startLevel();
       displayCurrentScore();
     }
   } else {
-    alert("You Lose");
-    enterPlayerName();
+    whenLose();
     enableResetButton();
     disableColorBtns();
     setRootRunning();
@@ -173,6 +173,7 @@ function testColor(e) {
     resetLevel();
     resetScore();
     displayCurrentScore();
+    displaySpeed = speedBar.value
   }
 }
 
@@ -182,7 +183,11 @@ function testColor(e) {
 //update score scoreborad, and save to local storage
 function enterPlayerName() {
   let player = prompt("Enter you name to be on the Score Board");
-  playerName = player;
+  if (player == null || player == "") {
+    playerName = "Mystery";
+  } else {
+    playerName = player;
+  }
 }
 
 function scoreCalculator() {
@@ -240,4 +245,17 @@ function stringNStoreScore() {
 
 function deStringNRetriveScore() {
   topFiveScore = JSON.parse(localStorage.getItem("TopScores"));
+}
+
+// adjust speed per level
+function adjustSpeed(){
+  if (level % 2 == 0 && displaySpeed >= 100){
+    displaySpeed = displaySpeed - displaySpeed/10
+  }
+}
+
+// when lose notification
+function whenLose(){
+  alert("You Lose");
+  enterPlayerName();
 }

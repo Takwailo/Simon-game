@@ -108,10 +108,10 @@ input[type="range"] {
   text-align: center;
 }
 
+
 .direction {
   grid-row: 3;
   grid-column: 1;
-  text-align: center;
 }
 
 #Scoring {
