@@ -1,3 +1,7 @@
+//game is about running sequence and repeating sequency
+//when player click start sequence will be generate, then button will be lit up following the sequence.
+//player will than repeat the sequence by clicking the button.
+
 const colors = ["yellow", "red", "green", "blue"];
 let sequences = [];
 let playerGuess = [];
@@ -10,15 +14,14 @@ let guessCount = 0;
 const speedBar = document.getElementById("speedRange");
 let displaySpeed = speedBar.value;
 let disapperSpeed = 0;
-// const scoreBtn = document.querySelector("#scoreBtn");
 const scoreBoard = document.getElementById("scoreboard");
 let playerName = "";
 let score;
 
+//added range so player can adjust speed in the begining
 speedBar.oninput = function () {
   displaySpeed = this.value;
 };
-
 function toadjustDisapperSpeed() {
   disapperSpeed = displaySpeed - displaySpeed / 5;
 }
@@ -30,31 +33,26 @@ colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
 resetBtn.addEventListener("click", resetGame);
-// scoreBtn.addEventListener("click", displayScoreBoard);
 
 function scoreCalculator() {
-  if (displaySpeed < 750) {
+  if (displaySpeed == 200) {
     score = +level * 200;
-  } else {
+  } else if (displaySpeed == 400) {
+    score = +level * 150;
+  } else if (displaySpeed == 600) {
     score = +level * 100;
+  } else {
+    score = +level * 50;
   }
 }
 
-// function displayScoreBoard() {
-//   if (scoreBoard.style.display === "none") {
-//     scoreBoard.style.display = "block";
-//   } else {
-//     scoreBoard.style.display = "none";
-//   }
-// }
-
 function runInitial() {
-  if (topFiveScore !== null) {
-    displayTopFive();
-  }
   disableColorBtns();
   setRootRunning();
   deStringNRetriveScore();
+  if (topFiveScore !== null) {
+    displayTopFive();
+  }
 }
 
 function enterPlayerName() {
@@ -175,7 +173,7 @@ function testColor(e) {
       displayCurrentScore();
     }
   } else {
-    alert("youlose");
+    alert("You Lose");
     enterPlayerName();
     enableResetButton();
     disableColorBtns();
