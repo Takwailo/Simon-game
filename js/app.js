@@ -10,7 +10,7 @@ let guessCount = 0;
 const speedBar = document.getElementById("speedRange");
 let displaySpeed = speedBar.value;
 let disapperSpeed = 0;
-const scoreBtn = document.querySelector("#scoreBtn");
+// const scoreBtn = document.querySelector("#scoreBtn");
 const scoreBoard = document.getElementById("scoreboard");
 let playerName = "";
 let score;
@@ -24,30 +24,37 @@ function toadjustDisapperSpeed() {
 }
 
 //call basic function when page load
-disableColorBtns();
-setRootRunning();
-deStringNRetriveScore();
+runInitial();
 //event listener
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
 resetBtn.addEventListener("click", resetGame);
-scoreBtn.addEventListener("click", displayScoreBoard);
+// scoreBtn.addEventListener("click", displayScoreBoard);
 
 function scoreCalculator() {
   if (displaySpeed < 750) {
-    score =+ level * 200;
+    score = +level * 200;
   } else {
-    score =+ level * 100;
+    score = +level * 100;
   }
 }
 
-function displayScoreBoard() {
-  if (scoreBoard.style.display === "none") {
-    scoreBoard.style.display = "block";
-  } else {
-    scoreBoard.style.display = "none";
+// function displayScoreBoard() {
+//   if (scoreBoard.style.display === "none") {
+//     scoreBoard.style.display = "block";
+//   } else {
+//     scoreBoard.style.display = "none";
+//   }
+// }
+
+function runInitial() {
+  if (topFiveScore !== null) {
+    displayTopFive();
   }
+  disableColorBtns();
+  setRootRunning();
+  deStringNRetriveScore();
 }
 
 function enterPlayerName() {
