@@ -150,6 +150,7 @@ function startLevel() {
   scoreCalculator();
 }
 
+//testchoice and after math
 function testColor(e) {
   if (e.target.id === sequences[guessCount]) {
     guessCount++;
@@ -191,11 +192,11 @@ function enterPlayerName() {
 }
 
 function scoreCalculator() {
-  if (displaySpeed == 200) {
+  if (displaySpeed <= 200) {
     score = +level * 200;
-  } else if (displaySpeed == 400) {
+  } else if (displaySpeed <= 400) {
     score = +level * 150;
-  } else if (displaySpeed == 600) {
+  } else if (displaySpeed <= 600) {
     score = +level * 100;
   } else {
     score = +level * 50;
@@ -249,8 +250,11 @@ function deStringNRetriveScore() {
 
 // adjust speed per level
 function adjustSpeed(){
-  if (level % 2 == 0 && displaySpeed >= 100){
+  if (level % 2 == 0 && displaySpeed >= 180){
     displaySpeed = displaySpeed - displaySpeed/10
+  }
+  if (displaySpeed < 180){
+    displaySpeed = 180
   }
 }
 
