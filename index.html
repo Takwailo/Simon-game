@@ -11,30 +11,35 @@
 </head>
 
 <body>
-    <div>
+    <div class="stand">
         <h1>SIMON</h1>
+        <div id="initial">
+            <img src="image/bunny.png" alt='bunny' width="50" id="bunny">
+            <img src="image/turtle.png" alt='turtle' width="50" id="turtle">
+            <input type="range" min="200" max="800" step="200" class="slider" id="speedRange" /></br>
+            <span><button id="Start">Start</button></span>
+        </div>
+        <div id="Scoring">
+            <h3 id="currentLevel">Level: 1</h3>
+            <h3 id="currentScore">Current Score: 0</h3>
+        </div>
+        <div class="direction">
+            <button>Direction</button>
+            123
+        </div>
+        <div class="score">
+            <button id="scoreBtn">Check Out the high score</button>
+            <ol id="scoreboard">
+                high score
+            </ol>
+        </div>
+        <div id="root" class="stopped">
+            <button class="btn red" id="red"></button>
+            <button class="btn yellow" id="yellow"></button>
+            <button class="btn green" id="green"></button>
+            <button class="btn blue" id="blue"></button>
+        </div>
     </div>
-    <nav>Direction: Choose you speed and click Start. Follow the sequence and repeat.</nav>
-    <div id="speedInst">
-        <h2>Faster</h2>
-        <input type="range" min="200" max="800" step="200" class="slider" id="speedRange">
-        <h2>Slower</h2><br>
-        <button id="Start">Start</button>
-    </div>
-    <div id="root" class="stopped">
-        <button class="btn red" id="red"></button>
-        <button class="btn yellow" id="yellow"></button>
-        <button class="btn green" id="green"></button>
-        <button class="btn blue" id="blue"></button>
-    </div>
-    <div id="score">
-        <h3 id="currentLevel">Level: 1</h3>
-        <button id="scoreBtn">Check Out the high score</button>
-        <ol id="scoreboard">high score</ol>
-        <h3 id="currentScore">Current Score: 0</h3>
-    </div>
-    
-
 </body>
 
 </html>
