@@ -22,6 +22,7 @@ let score;
 speedBar.oninput = function () {
   displaySpeed = this.value;
 };
+//balance the base time how the 'light' will remain on
 function toadjustDisapperSpeed() {
   disapperSpeed = displaySpeed - displaySpeed / 5;
 }
@@ -32,20 +33,10 @@ runInitial();
 colorBtns.forEach((button) => {
   button.addEventListener("click", testColor);
 });
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetGame)
 
-function scoreCalculator() {
-  if (displaySpeed == 200) {
-    score = +level * 200;
-  } else if (displaySpeed == 400) {
-    score = +level * 150;
-  } else if (displaySpeed == 600) {
-    score = +level * 100;
-  } else {
-    score = +level * 50;
-  }
-}
 
+//run initial funtion
 function runInitial() {
   disableColorBtns();
   setRootRunning();
@@ -53,11 +44,6 @@ function runInitial() {
   if (topFiveScore !== null) {
     displayTopFive();
   }
-}
-
-function enterPlayerName() {
-  let player = prompt("Enter you name to be on the Score Board");
-  playerName = player;
 }
 
 function addSequence() {
@@ -80,7 +66,8 @@ function resetLevel() {
   level = 1;
   displayLevel();
 }
-
+//display the color sequency by add class to the button, and turn off by removing the sequence.
+//added callback when the showing is complete to enable color button
 function displaySequences(callbackFunction) {
   sequences.forEach((color, index) => {
     let node = document.querySelector(`#${color}`);
@@ -125,6 +112,7 @@ function resetGame() {
   disableSpeedBar();
 }
 
+//visial disable for hovering over button when sequence is running.
 function setRootRunning() {
   root.classList.remove("stopped");
   root.classList.add("running");
@@ -146,7 +134,7 @@ function enableColorBtns() {
     colorBtn.disabled = false;
   });
 }
-
+//start game function
 function startLevel() {
   toadjustDisapperSpeed();
   clearGuesses();
@@ -185,6 +173,27 @@ function testColor(e) {
     resetLevel();
     resetScore();
     displayCurrentScore();
+  }
+}
+
+//what happen when lost and how score work
+//when lost alert player
+//let player enter name
+//update score scoreborad, and save to local storage
+function enterPlayerName() {
+  let player = prompt("Enter you name to be on the Score Board");
+  playerName = player;
+}
+
+function scoreCalculator() {
+  if (displaySpeed == 200) {
+    score = +level * 200;
+  } else if (displaySpeed == 400) {
+    score = +level * 150;
+  } else if (displaySpeed == 600) {
+    score = +level * 100;
+  } else {
+    score = +level * 50;
   }
 }
 
