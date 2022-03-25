@@ -6,7 +6,7 @@ Players must repeat random sequences of lights by pressing the colored pads in t
 It is a fast-paced game that will require your concentration and short term memory.
 Challenge your friends and beat your own high score.
 
-<img src='image/ScreenShot.png'>
+<img src='image/Screen Shot.png'>
 
 ## Technologies Used:
 
