@@ -1,7 +1,10 @@
 body {
-  background-color: white;
+  background: #eeeeee;
   display: flex;
   justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 
 h1 {
@@ -19,13 +22,22 @@ input[type="range"] {
   grid-template-rows: 1fr 1fr 3fr;
   grid-template-columns: 1fr 1fr 1fr;
   width: 520px;
-  border: solid black 2px;
-  background-color: gray;
+  /* border: solid black 2px; */
+  background-color: #dbd4d4;
+  border-radius: 20px;
+  font-family: monospace;
+  box-shadow: 3px 3px 15px #6a6a6a, -5px -5px 15px #ffffff;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 #Start {
   background-color: black;
   color: white;
+  border-radius: 5px;
+  margin: 5px 0;
 }
 
 .btn {
@@ -33,6 +45,7 @@ input[type="range"] {
   width: 100px;
   border-radius: 10%;
   background-color: grey;
+  transition: 250ms ease;
 }
 
 .btn.red {
@@ -69,22 +82,23 @@ input[type="range"] {
 #root.stopped .btn.green:hover,
 #root.stopped .btn.yellow:hover {
   border: none;
+  transform: translateY(3px);
 }
 
 .btn.red.displaySequence {
-  box-shadow: 0 0 40px red;
+  box-shadow: 0 0 30px red;
 }
 
 .btn.blue.displaySequence {
-  box-shadow: 0 0 40px blue;
+  box-shadow: 0 0 30px blue;
 }
 
 .btn.green.displaySequence {
-  box-shadow: 0 0 40px green;
+  box-shadow: 0 0 30px rgb(1, 116, 1);
 }
 
 .btn.yellow.displaySequence {
-  box-shadow: 0 0 40px rgb(188, 188, 7);
+  box-shadow: 0 0 30px rgb(165, 165, 5);
 }
 
 #root {
@@ -97,9 +111,11 @@ input[type="range"] {
   grid-row: 3;
   grid-column: 2;
   place-self: center;
-  border: 2px solid black;
-  padding: 10px 0px;
+  /* border: 2px solid black; */
+  padding: 10px 0;
+  margin: 10px;
   border-radius: 50%;
+  box-shadow: 3px 3px 15px #6a6a6a, -5px -5px 15px #ffffff;
 }
 
 .score {
@@ -135,12 +151,14 @@ input[type="range"] {
 }
 
 #bunny {
+  margin-bottom: 0px;
   width: 50px;
-  height: 50px;
+  height: 45px;
 }
 
 #turtle {
-  margin-top: 10px;
+  margin-top: 7px;
   width: 60px;
   height: 40px;
+  line-height: 40px;
 }
